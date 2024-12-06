@@ -1,16 +1,25 @@
 "use client";
 
-import SearchResults from "@/app/components/searchResults";
-import { search } from "@/app/queries/search";
-import { useState } from "react";
+import SearchResults from "@/app/components/SearchResults";
+import { search } from "@/app/utils/search";
+import { KeyboardEvent, useState } from "react";
 
 export default function InputBox() {
     const [value, setValue] = useState("");
-    const [results, setResults] = useState<string[]>([]);
+    const [results, setResults] = useState<string[] | null>(null);
+    const [isFetching, setIsFetching] = useState(false);
 
     const handleSearch = async () => {
-        const resposne = await search(value.trim());
-        setResults(resposne);
+        setIsFetching(true);
+        await setTimeout(async () => {
+            const resposne = await search(value.trim());
+            setIsFetching(false);
+            setResults(resposne);
+        }, 2000);
+    };
+
+    const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
+        if (event.key === "Enter") handleSearch();
     };
 
     return (
@@ -20,7 +29,7 @@ export default function InputBox() {
                 maxLength={100}
                 value={value}
                 onChange={(event) => setValue(event.currentTarget.value)}
-                onKeyDown={(event) => event.key === "Enter" && handleSearch}
+                onKeyDown={handleKeyDown}
             />
             <button
                 disabled={value.trim() === ""}
@@ -29,7 +38,8 @@ export default function InputBox() {
             >
                 검색하기
             </button>
-            {results.length > 0 && <SearchResults books={["heelo"]} />}
+            {isFetching && <div>검색 중...</div>}
+            {results !== null && <SearchResults books={results} />}
         </div>
     );
 }
