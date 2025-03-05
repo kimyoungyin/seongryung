@@ -48,5 +48,4 @@ export interface Books {
     publisher: string;
     comment: string;
     location: number;
-    image_url: string;
 }

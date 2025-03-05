@@ -11,7 +11,9 @@ const nextConfig: NextConfig = {
             },
             {
                 protocol: "https",
-                hostname: "contents.kyobobook.co.kr",
+                hostname: (process.env.NEXT_PUBLIC_S3_HOSTNAME as string).split(
+                    "/"
+                )[2],
             },
         ],
     },

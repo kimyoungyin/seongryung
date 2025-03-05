@@ -1,21 +1,20 @@
 "use client";
 
 import SearchResults from "@/app/components/SearchResults";
+import { Books } from "@/app/utils/db";
 import { search } from "@/app/utils/search";
 import { KeyboardEvent, useState } from "react";
 
 export default function InputBox() {
     const [value, setValue] = useState("");
-    const [results, setResults] = useState<string[] | null>(null);
+    const [results, setResults] = useState<Books[] | null>(null);
     const [isFetching, setIsFetching] = useState(false);
 
     const handleSearch = async () => {
         setIsFetching(true);
-        await setTimeout(async () => {
-            const resposne = await search(value.trim());
-            setIsFetching(false);
-            setResults(resposne);
-        }, 2000);
+        const response = await search(value.trim());
+        setIsFetching(false);
+        setResults(response);
     };
 
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
