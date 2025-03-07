@@ -2,7 +2,7 @@
 
 import SearchResults from "@/app/components/SearchResults";
 import { Books } from "@/app/utils/db";
-import { search } from "@/app/utils/search";
+import { search } from "@/app/utils/query";
 import { KeyboardEvent, useState } from "react";
 
 export default function InputBox() {

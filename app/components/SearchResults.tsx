@@ -1,5 +1,5 @@
-"use client"; // 리렌더링 방지
 import { Books } from "@/app/utils/db";
+import { getImageSrc } from "@/app/utils/util";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -18,25 +18,22 @@ export default function SearchResults({ books }: { books: Books[] }) {
 
     return (
         <div>
-            {books.map((bookObj) => {
-                const imageUrl = `${process.env.NEXT_PUBLIC_S3_HOSTNAME}/${bookObj.location}/${bookObj.id}.jpg`;
-                return (
-                    // bookId 쓸 것
-                    <li key={bookObj.id}>
-                        <Link href={"/" + bookObj.title}>
-                            <div>{bookObj.title}</div>
-                            <div>
-                                <Image
-                                    src={imageUrl}
-                                    alt={bookObj.title + " 에 대한 이미지"}
-                                    width={300}
-                                    height={200}
-                                />
-                            </div>
-                        </Link>
-                    </li>
-                );
-            })}
+            {books.map((bookObj) => (
+                // bookId 쓸 것
+                <li key={bookObj.id}>
+                    <Link href={"/" + bookObj.id}>
+                        <div>{bookObj.title}</div>
+                        <div>
+                            <Image
+                                src={getImageSrc(bookObj.location, bookObj.id)}
+                                alt={bookObj.title + " 에 대한 이미지"}
+                                width={300}
+                                height={200}
+                            />
+                        </div>
+                    </Link>
+                </li>
+            ))}
         </div>
     );
 }
