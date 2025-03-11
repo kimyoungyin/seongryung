@@ -4,8 +4,11 @@ import Image from "next/image";
 import Link from "next/link";
 
 export default async function SearchResults({ query }: { query: string }) {
-    const books = await search(query);
-
+    // 첫 렌더링 시에 전체 검색 불러오지 않도록 수정
+    const books = query ? await search(query) : null;
+    // 검색을 아직 안 했을 초기 상태. 아무런 안내도 띄우지 않는다.
+    if (books === null) return null;
+    // 검색을 했으나 결과가 없을 때
     if (books.length === 0)
         return (
             <div>
