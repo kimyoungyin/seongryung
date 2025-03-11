@@ -32,6 +32,18 @@ export default async function Page(props: PageProps) {
                     blurDataURL={BLUR_SKELETON}
                 />
             </div>
+            <h2>{bookObj.title}</h2>
+            {bookObj.author && <h3>{bookObj.author}</h3>}
+            {bookObj.season && <h4>시즌: {bookObj.season}</h4>}
+            {bookObj.publisher && <h5>{bookObj.publisher}</h5>}
+            {bookObj.total_num && <span>총권: {bookObj.total_num}</span>}
+            {bookObj.composition && <span>구성:{bookObj.composition}</span>}
+            {bookObj.comment && <div>설명:{bookObj.comment}</div>}
+            {bookObj.location && (
+                <div>
+                    <strong>위치: {bookObj.location}</strong>
+                </div>
+            )}
         </div>
     );
 }
