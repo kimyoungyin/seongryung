@@ -1,4 +1,4 @@
-import { search } from "@/app/utils/query";
+import { search } from "@/app/utils/actions";
 import { getImageSrc } from "@/app/utils/util";
 import Image from "next/image";
 import Link from "next/link";

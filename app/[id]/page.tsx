@@ -1,4 +1,4 @@
-import { getBookDetail } from "@/app/utils/query";
+import { getBookDetail } from "@/app/utils/actions";
 import { getImageSrc } from "@/app/utils/util";
 import Image from "next/image";
 
