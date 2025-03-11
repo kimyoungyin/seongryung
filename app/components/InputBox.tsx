@@ -12,7 +12,7 @@ export default function InputBox() {
     // 여기서 사용하는 리렌더링 관련 훅이 없으므로 최상단에 노출시킴
     const params = new URLSearchParams(searchParams);
     const pathname = usePathname();
-    const { replace } = useRouter();
+    const { push } = useRouter();
 
     const handleSearchParamsChange = (term: string) => {
         const trimmedTerm = term.trim();
@@ -24,7 +24,7 @@ export default function InputBox() {
     };
 
     const handleSubmit = () => {
-        if (params.get(QUERY)) replace(`${pathname}?${params.toString()}`);
+        if (params.get(QUERY)) push(`${pathname}?${params.toString()}`);
     };
 
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
