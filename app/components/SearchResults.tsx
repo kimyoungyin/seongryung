@@ -1,9 +1,11 @@
-import { Books } from "@/app/utils/db";
+import { search } from "@/app/utils/query";
 import { getImageSrc } from "@/app/utils/util";
 import Image from "next/image";
 import Link from "next/link";
 
-export default function SearchResults({ books }: { books: Books[] }) {
+export default async function SearchResults({ query }: { query: string }) {
+    const books = await search(query);
+
     if (books.length === 0)
         return (
             <div>
