@@ -26,7 +26,7 @@ export default async function SearchResults({ query }: { query: string }) {
             {books.map((bookObj) => (
                 // bookId 쓸 것
                 <li key={bookObj.id}>
-                    <Link href={"/" + bookObj.id}>
+                    <Link href={"detail/" + bookObj.id}>
                         <div>{bookObj.title}</div>
                         <div>
                             <Image
