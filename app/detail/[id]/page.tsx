@@ -6,6 +6,9 @@ interface PageProps {
     params: Promise<{ id: string }>;
 }
 
+const BLUR_SKELETON =
+    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8UA8AAiUBUcc3qzwAAAAASUVORK5CYII=";
+
 export default async function Page(props: PageProps) {
     const params = await props.params;
     // 비동기적으로 책 정보와 위치를 db에 검색 후 없으면 Redirect
@@ -18,16 +21,15 @@ export default async function Page(props: PageProps) {
     return (
         <div>
             {/* 이후 이미지와 컨텐츠 반응형 처리 */}
-            <div>
-                <h2>책 위치</h2>
-                <span>책 id: {bookId}</span>
-            </div>
+
             <div>
                 <Image
                     src={getImageSrc(bookObj.location, bookObj.id)}
                     alt={bookObj.title}
-                    width={200}
-                    height={400}
+                    height={500}
+                    width={333}
+                    placeholder="blur"
+                    blurDataURL={BLUR_SKELETON}
                 />
             </div>
         </div>
