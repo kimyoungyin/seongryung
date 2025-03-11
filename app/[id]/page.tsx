@@ -1,3 +1,5 @@
+import { getBookDetail } from "@/app/utils/actions";
+import { getImageSrc } from "@/app/utils/util";
 import Image from "next/image";
 
 interface PageProps {
@@ -10,7 +12,8 @@ export default async function Page(props: PageProps) {
 
     // 동적 라우팅은 비동기적이므로
     // npx @next/codemod@latest next-async-request-api --force
-    const bookId = await params.id;
+    const bookId = Number(await params.id);
+    const bookObj = (await getBookDetail(bookId))[0];
 
     return (
         <div>
@@ -21,10 +24,8 @@ export default async function Page(props: PageProps) {
             </div>
             <div>
                 <Image
-                    src={
-                        "https://contents.kyobobook.co.kr/sih/fit-in/458x0/pdt/9791167790484.jpg"
-                    }
-                    alt={"연애혁명"}
+                    src={getImageSrc(bookObj.location, bookObj.id)}
+                    alt={bookObj.title}
                     width={200}
                     height={400}
                 />

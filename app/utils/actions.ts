@@ -9,3 +9,9 @@ export const search = cache(async (bookName: string) => {
     // SELECT * FROM books WHERE title LIKE %?% 대신 다음과 같이 포함 검색
     return (await queryDatabase(sql, [`%${pureBookName}%`])) as Books[];
 });
+
+export const getBookDetail = cache(async (bookId: number) => {
+    const sql = `SELECT * FROM books WHERE id = ? LIMIT 1`;
+    // SELECT * FROM books WHERE title LIKE %?% 대신 다음과 같이 포함 검색
+    return (await queryDatabase(sql, [bookId])) as [Books];
+});
