@@ -22,7 +22,7 @@ export default async function SearchResults({ query }: { query: string }) {
         );
 
     return (
-        <div className="max-w-4xl mx-auto space-y-4">
+        <div className="max-w-4xl mx-auto space-y-4 px-4">
             {books.map((bookObj) => (
                 <div
                     key={bookObj.id}
