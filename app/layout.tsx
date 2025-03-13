@@ -28,7 +28,11 @@ export default function RootLayout({
             <body
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
-                {children}
+                <div className="min-h-screen bg-base-bg p-6">
+                    <h1 className="text-2xl">승룡이네집 도서 검색 시스템</h1>
+
+                    {children}
+                </div>
             </body>
         </html>
     );
