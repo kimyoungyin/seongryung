@@ -28,7 +28,7 @@ export default async function SearchResults({ query }: { query: string }) {
                             찾으시는 책이 있을 수 있으니 검색어를 수정해보세요!
                         </span>
 
-                        <div className="py-4 px-6 bg-skeleton/30 rounded-lg inline-block w-[90%]">
+                        <div className="py-4 px-6 bg-skeleton/30 rounded-lg inline-block">
                             <div className="text-sm sm:text-base text-text-primary/80 flex flex-col gap-4">
                                 <p className="flex flex-col">
                                     ✓ 책 제목의 일부만 입력해보세요
