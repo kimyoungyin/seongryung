@@ -12,26 +12,26 @@ export default async function SearchResults({ query }: { query: string }) {
     // 검색을 했으나 결과가 없을 때
     if (books.length === 0)
         return (
-            <div className="bg-[#fffdf8] rounded-xl min-h-[60vh] flex items-center justify-center p-6">
+            <div className="bg-card-bg rounded-xl min-h-[60vh] flex items-center justify-center p-6">
                 <div className="max-w-2xl text-center space-y-8">
                     {/* 아이콘 그룹 */}
-                    <div className="relative mx-auto w-fit">
-                        <SearchX className="w-32 h-32 text-[#5d5348] animate-float" />
+                    <div className="mx-auto w-fit">
+                        <SearchX className="w-32 h-32 text-text-primary animate-float" />
                     </div>
 
                     {/* 텍스트 영역 */}
                     <div className="space-y-4">
-                        <h1 className="text-2xl sm:text-3xl font-bold text-[#5d5348]">
+                        <h1 className="text-2xl sm:text-3xl font-bold text-text-primary">
                             <span className="block mb-2">
                                 검색 결과가 없어요...
                             </span>
                         </h1>
-                        <span className="block text-md sm:text-lg font-normal text-[#726a5f]">
+                        <span className="block text-md sm:text-lg font-normal text-text-secondary">
                             찾으시는 책이 있을 수 있으니 검색어를 수정해보세요!
                         </span>
 
-                        <div className="py-4 px-6 bg-[#e8e0d5]/30 rounded-lg inline-block">
-                            <p className="text-sm sm:text-base text-[#5d5348]/80">
+                        <div className="py-4 px-6 bg-skeleton/30 rounded-lg inline-block">
+                            <p className="text-sm sm:text-base text-text-primary/80">
                                 ✓ 책 제목의 일부만 입력해보세요
                                 <br />✓ 띄어쓰기를 정확히 해보세요
                             </p>
