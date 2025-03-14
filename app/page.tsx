@@ -14,7 +14,7 @@ export default async function Page(props: {
     return (
         <div>
             <InputBox />
-            <div className="max-w-4xl mx-auto space-y-4 px-4">
+            <div className="space-y-4 px-4">
                 <Suspense
                     fallback={
                         <>
