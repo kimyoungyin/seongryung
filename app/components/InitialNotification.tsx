@@ -29,7 +29,7 @@ export default function InitialNotification({
                         <button
                             key={keyword}
                             onClick={() => onClick(keyword)}
-                            className="px-4 py-2 bg-button-bg/10 text-text-primary bg-text-primary 
+                            className="px-4 py-2 bg-button-bg/10 text-text-primary bg-button-bg
 					rounded-full hover:bg-text-primary/20 transition-colors
 					focus:ring-2 focus:ring-text-primary/50 focus:bg-text-primary/50"
                         >
