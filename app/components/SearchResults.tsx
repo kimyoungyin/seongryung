@@ -37,7 +37,7 @@ export default async function SearchResults({ query }: { query: string }) {
                                     </span>
                                 </p>
                                 <p className="flex flex-col">
-                                    ✓ 띄어쓰기를 정확히 해보세요.
+                                    ✓ 띄어쓰기를 정확히 해보세요
                                     <span className="text-xs">
                                         ("그대를사랑합니다" -&gt; "그대를
                                         사랑합니다")
