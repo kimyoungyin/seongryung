@@ -14,6 +14,7 @@ export default {
             "input-border": "#e0d6c2", // Input border
             "text-primary": "#5d5348", // primary
             "text-secondary": "#726a5f", // secondary
+            skeleton: "#e8e0d5", // skeleton
         },
         extend: {
             colors: {

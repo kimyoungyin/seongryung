@@ -22,7 +22,7 @@ export default async function SearchResults({ query }: { query: string }) {
         );
 
     return (
-        <div className="max-w-4xl mx-auto space-y-4 px-4">
+        <>
             {books.map((bookObj) => (
                 <div
                     key={bookObj.id}
@@ -34,6 +34,7 @@ export default async function SearchResults({ query }: { query: string }) {
                                 src={getImageSrc(bookObj.location, bookObj.id)}
                                 alt={bookObj.title}
                                 fill
+                                sizes="(min-width: 640px) 6rem, 4rem" // w-24, w-16
                                 className="object-cover rounded-lg"
                                 quality={80}
                             />
@@ -72,6 +73,6 @@ export default async function SearchResults({ query }: { query: string }) {
                     </div>
                 </div>
             ))}
-        </div>
+        </>
     );
 }
