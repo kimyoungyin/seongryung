@@ -7,9 +7,6 @@ interface PageProps {
     params: Promise<{ id: string }>;
 }
 
-const BLUR_SKELETON =
-    "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mO8UA8AAiUBUcc3qzwAAAAASUVORK5CYII=";
-
 const FLOOR_IMAGE_SIZE: {
     readonly [floor: number]: {
         readonly width: number;
