@@ -16,8 +16,7 @@ export default function BookCard({
             className={
                 (isAboutLocation
                     ? "bg-white"
-                    : "bg-card-bg rounded-xl shadow-md hover:shadow-lg transition-shadow cursor-pointer") +
-                " p-6"
+                    : "bg-card-bg rounded-xl shadow-md") + " p-6"
             }
         >
             <div className="flex gap-6">
