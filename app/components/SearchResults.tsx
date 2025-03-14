@@ -33,20 +33,22 @@ export default async function SearchResults({ query }: { query: string }) {
                                 <p className="flex flex-col">
                                     ✓ 책 제목의 일부만 입력해보세요
                                     <span className="text-xs">
-                                        ("그대를 사랑합니다" -&gt; "그대를")
+                                        (&ldquo;그대를 사랑합니다&ldquo; -&gt;
+                                        &ldquo;그대를&ldquo;)
                                     </span>
                                 </p>
                                 <p className="flex flex-col">
                                     ✓ 띄어쓰기를 정확히 해보세요
                                     <span className="text-xs">
-                                        ("그대를사랑합니다" -&gt; "그대를
-                                        사랑합니다")
+                                        (&ldquo;그대를사랑합니다&ldquo; -&gt;
+                                        &ldquo;그대를 사랑합니다&ldquo;)
                                     </span>
                                 </p>
                                 <p className="flex flex-col">
                                     ✓ 영어 제목은 한글로 변경해보세요
                                     <span className="text-xs">
-                                        (Marvel -&gt; 마블)
+                                        (&ldquo;Marvel&ldquo; -&gt;
+                                        &ldquo;마블&ldquo;)
                                     </span>
                                 </p>
                             </div>

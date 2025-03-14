@@ -44,18 +44,22 @@ export default function InitialNotification({
                 <p className="flex flex-col sm:flex-row sm:items-center sm:gap-4">
                     ✓ 책 제목의 일부만 입력해보세요
                     <span className="opacity-60">
-                        ("그대를 사랑합니다" -&gt; "그대를")
+                        (&ldquo;그대를 사랑합니다&ldquo; -&gt;
+                        &ldquo;그대를&ldquo;)
                     </span>
                 </p>
                 <p className="flex flex-col sm:flex-row sm:items-center sm:gap-4">
                     ✓ 띄어쓰기를 정확히 해보세요
                     <span className="opacity-60">
-                        ("그대를사랑합니다" -&gt; "그대를 사랑합니다")
+                        (&ldquo;그대를사랑합니다&ldquo; -&gt; &ldquo;그대를
+                        사랑합니다&ldquo;)
                     </span>
                 </p>
                 <p className="flex flex-col sm:flex-row sm:items-center sm:gap-4">
                     ✓ 영어 제목은 한글로 변경해보세요
-                    <span className="opacity-60">(Marvel -&gt; 마블)</span>
+                    <span className="opacity-60">
+                        (&ldquo;Marvel&ldquo; -&gt; &ldquo;마블&ldquo;)
+                    </span>
                 </p>
             </div>
         </div>
