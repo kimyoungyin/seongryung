@@ -33,7 +33,8 @@ export default function RootLayout({
                         <div className="flex-1 max-w-4xl flex items-center h-16 gap-3">
                             {/* 이미지 영역 (테마 색상 적용) */}
                             <div className="w-10 h-10 rounded-full bg-button-bg/20 border-2 border-input-border">
-                                <div className="w-full h-full bg-[url('/승룡이.png')] bg-contain" />
+                                {/* 여기 캐릭터 이미지 올려야  */}
+                                <div className="w-full h-full bg-contain" />
                             </div>
 
                             {/* 텍스트 계층 구조 개선 */}
