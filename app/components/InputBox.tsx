@@ -47,7 +47,7 @@ export default function InputBox() {
                 />
                 <button
                     onClick={handleSubmit}
-                    className="bg-button-bg text-text-primary px-6 py-3 rounded-lg hover:bg-[#c0a97e] transition-colors flex items-center gap-2"
+                    className="bg-button-bg text-text-primary px-6 py-3 rounded-lg hover:bg-button-bg-hover transition-colors flex items-center gap-2"
                 >
                     <Search size={20} />
                     검색
