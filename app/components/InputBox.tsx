@@ -1,5 +1,6 @@
 "use client";
 
+import InitialNotification from "@/app/components/InitialNotification";
 import { Search } from "lucide-react";
 // import SearchResults from "@/app/components/SearchResults";
 import { usePathname, useSearchParams, useRouter } from "next/navigation";
@@ -32,27 +33,37 @@ export default function InputBox() {
         if (event.key === "Enter") handleSubmit();
     };
     return (
-        <div className="max-w-4xl mx-auto mb-8">
-            <div className="flex gap-2">
-                <input
-                    type="text"
-                    maxLength={100}
-                    placeholder="만화책 제목 검색"
-                    defaultValue={searchParams.get(QUERY)?.toString()}
-                    onChange={(event) =>
-                        handleSearchParamsChange(event.currentTarget.value)
-                    }
-                    onKeyDown={handleKeyDown}
-                    className="flex-1 p-3 border-2 border-input-border rounded-lg focus:ring-2 ring-button-bg outline-none bg-white/50"
-                />
-                <button
-                    onClick={handleSubmit}
-                    className="bg-button-bg text-text-primary px-6 py-3 rounded-lg hover:bg-button-bg-hover transition-colors flex items-center gap-2"
-                >
-                    <Search size={20} />
-                    검색
-                </button>
+        <>
+            <div className="max-w-4xl mx-auto mb-8">
+                <div className="flex gap-2">
+                    <input
+                        type="text"
+                        maxLength={100}
+                        placeholder="만화책 제목 검색"
+                        defaultValue={searchParams.get(QUERY)?.toString()}
+                        onChange={(event) =>
+                            handleSearchParamsChange(event.currentTarget.value)
+                        }
+                        onKeyDown={handleKeyDown}
+                        className="flex-1 p-3 border-2 border-input-border rounded-lg focus:ring-2 ring-button-bg outline-none bg-white/50"
+                    />
+                    <button
+                        onClick={handleSubmit}
+                        className="bg-button-bg text-text-primary px-6 py-3 rounded-lg hover:bg-button-bg-hover transition-colors flex items-center gap-2"
+                    >
+                        <Search size={20} />
+                        검색
+                    </button>
+                </div>
             </div>
-        </div>
+            {!params.get(QUERY) && (
+                <InitialNotification
+                    onClick={(value) => {
+                        params.set(QUERY, value);
+                        push(`${pathname}?${params.toString()}`);
+                    }}
+                />
+            )}
+        </>
     );
 }
