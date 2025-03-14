@@ -38,7 +38,7 @@ export async function queryDatabase(
     }
 }
 
-export interface Books {
+export interface Book {
     id: number;
     title: string;
     season: string;

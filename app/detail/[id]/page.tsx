@@ -1,5 +1,6 @@
+import BookCard from "@/app/components/BookCard";
+import GobackButton from "@/app/components/GoBackButton";
 import { getBookDetail } from "@/app/utils/actions";
-import { getImageSrc } from "@/app/utils/util";
 import Image from "next/image";
 
 interface PageProps {
@@ -30,40 +31,38 @@ export default async function Page(props: PageProps) {
     const bookFloor = bookObj.location < 11 || bookObj.location === 78 ? 2 : 1;
 
     return (
-        <div className=" flex flex-col items-center gap-5">
-            {/* 이후 이미지와 컨텐츠 반응형 처리 */}
-            <div className="flex justify-between items-center gap-10">
-                <div>
-                    <Image
-                        src={getImageSrc(bookObj.location, bookObj.id)}
-                        alt={bookObj.title}
-                        width={333}
-                        height={500}
-                        placeholder="blur"
-                        blurDataURL={BLUR_SKELETON}
-                        className="rounded-xl"
-                    />
+        <div className="mx-auto p-6 pt-0">
+            <div className="bg-white rounded-xl shadow-lg p-8 flex flex-col gap-4 items-center">
+                <div className="self-start">
+                    <GobackButton />
                 </div>
-                <div className="rounded-md bg-white flex flex-col justify-end items-center gap-3">
-                    <h2 className="text-lg">
-                        만화 <strong>{bookObj.title}</strong> 의 위치는{" "}
-                        <strong>{bookFloor}층</strong>입니다
-                    </h2>
-                    <Image
-                        src={`/location${bookObj.location}.png`}
-                        alt={bookObj.location + `이 있는 ${bookFloor}층 이미지`}
-                        width={FLOOR_IMAGE_SIZE[bookFloor].width}
-                        height={FLOOR_IMAGE_SIZE[bookFloor].height}
-                        className="w-[80%]"
-                    />
+                <div className="w-full border-b-2 border-input-border flex justify-center">
+                    <div className="w-[90%]">
+                        <BookCard bookObj={bookObj} isAboutLocation={true} />
+                    </div>
                 </div>
+                <div
+                    className={
+                        "mt-8 px-6 text-xl sm:text-2xl text-text-primary"
+                    }
+                >
+                    <strong className="text-2xl sm:text-3xl font-bold">
+                        {bookFloor}
+                    </strong>{" "}
+                    층,{" "}
+                    <strong className="text-2xl sm:text-3xl font-bold">
+                        {bookObj.location === 78 ? "7~8" : bookObj.location}
+                    </strong>{" "}
+                    책장에 있습니다.
+                </div>
+                <Image
+                    src={`/location${bookObj.location}.png`}
+                    alt={bookObj.location + `이 있는 ${bookFloor}층 평면도`}
+                    width={FLOOR_IMAGE_SIZE[bookFloor].width}
+                    height={FLOOR_IMAGE_SIZE[bookFloor].height}
+                    className="w-[80%]"
+                />
             </div>
-            {/* {bookObj.author && <h3>{bookObj.author}</h3>}
-            {bookObj.season && <h4>시즌: {bookObj.season}</h4>}
-            {bookObj.publisher && <h5>{bookObj.publisher}</h5>}
-            {bookObj.total_num && <span>총권: {bookObj.total_num}</span>}
-            {bookObj.composition && <span>구성:{bookObj.composition}</span>}
-            {bookObj.comment && <div>설명:{bookObj.comment}</div>} */}
         </div>
     );
 }
