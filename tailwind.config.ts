@@ -15,6 +15,8 @@ export default {
             "text-primary": "#5d5348", // primary
             "text-secondary": "#726a5f", // secondary
             skeleton: "#e8e0d5", // skeleton
+            "skeleton-hover": "#dcd4c9", // skeleton hover
+            white: "white",
         },
         extend: {
             colors: {
