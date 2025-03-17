@@ -30,15 +30,15 @@ export default function RootLayout({
             >
                 <div className="min-h-screen bg-base-bg">
                     <header className="w-full bg-base-bg px-8 pt-6 pb-3 flex justify-center">
-                        <div className="flex-1 max-w-4xl flex items-center h-16 gap-3">
+                        <div className="flex-1 max-w-4xl flex items-center h-12 sm:h-16 gap-3">
                             {/* 이미지 영역 (테마 색상 적용) */}
-                            <div className="w-10 h-10 rounded-full bg-button-bg/20 border-2 border-input-border">
+                            <div className="w-8 h-8 sm:w-10 sm:h-10 rounded-full bg-button-bg/20 border-2 border-input-border">
                                 {/* 여기 캐릭터 이미지 올려야  */}
                                 <div className="w-full h-full bg-contain" />
                             </div>
 
                             {/* 텍스트 계층 구조 개선 */}
-                            <h1 className="text-2xl md:text-3xl font-extrabold text-text-primary">
+                            <h1 className="text-[min(calc(((100vw-128px))/13),30px)] font-extrabold text-text-primary">
                                 승룡이네집 도서 검색 시스템
                             </h1>
                         </div>
