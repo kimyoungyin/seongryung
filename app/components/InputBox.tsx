@@ -34,7 +34,7 @@ export default function InputBox() {
     };
     return (
         <>
-            <div className="max-w-4xl mx-auto mb-8">
+            <div className="max-w-4xl mx-auto mb-6 sm:mb-8 text-[min(calc(((100vw-128px))/20),16px)]">
                 <div className="flex gap-2">
                     <input
                         type="text"
@@ -45,13 +45,13 @@ export default function InputBox() {
                             handleSearchParamsChange(event.currentTarget.value)
                         }
                         onKeyDown={handleKeyDown}
-                        className="flex-1 p-3 border-2 border-input-border rounded-lg focus:ring-2 ring-button-bg outline-none bg-white/50"
+                        className="flex-1 px-3 py-2 sm:py-3 border-2 border-input-border rounded-lg focus:ring-2 ring-button-bg outline-none bg-white/50"
                     />
                     <button
                         onClick={handleSubmit}
-                        className="bg-button-bg text-text-primary px-6 py-3 rounded-lg hover:bg-button-bg-hover transition-colors flex items-center gap-2"
+                        className="bg-button-bg text-text-primary px-4 sm:px-6 py-2 sm:py-3  rounded-lg hover:bg-button-bg-hover transition-colors flex items-center gap-2"
                     >
-                        <Search size={20} />
+                        <Search className="w-[min(calc(((100vw-128px))/20),16px)] h-[min(calc(((100vw-128px))/20),16px)]" />
                         검색
                     </button>
                 </div>
