@@ -51,7 +51,7 @@ export default function BookCard({
                     {!isAboutLocation && (
                         <div className="self-end sm:self-center text-xs md:text-sm lg:text-md">
                             <Link
-                                href={`/detail/${bookObj.id}`}
+                                href={`/location/${bookObj.id}`}
                                 className="bg-skeleton text-text-primary px-4 py-2 rounded-md hover:bg-skeleton-hover transition-colors whitespace-nowrap"
                             >
                                 위치 보기 →

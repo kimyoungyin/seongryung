@@ -58,7 +58,7 @@ export default function InputBox() {
                     </button>
                 </div>
             </div>
-            {!params.get(QUERY) && pathname !== "/location" && (
+            {!params.get(QUERY) && pathname.substring(0, 9) !== "/location" && (
                 <InitialNotification
                     onClick={(value) => {
                         params.set(QUERY, value);
