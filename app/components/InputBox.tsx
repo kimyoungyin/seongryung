@@ -9,6 +9,7 @@ import { KeyboardEvent } from "react";
 const QUERY = "query";
 
 export default function InputBox() {
+    const pathName = usePathname();
     const searchParams = useSearchParams();
     // handleSearchParamsChange 뿐만 아니라, 다른 핸들러에도 사용해야 하는데,
     // 여기서 사용하는 리렌더링 관련 훅이 없으므로 최상단에 노출시킴
@@ -32,6 +33,7 @@ export default function InputBox() {
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter") handleSubmit();
     };
+
     return (
         <>
             <div className="max-w-4xl mx-auto mb-6 sm:mb-8 text-[min(calc(((100vw-128px))/20),16px)]">
@@ -56,7 +58,7 @@ export default function InputBox() {
                     </button>
                 </div>
             </div>
-            {!params.get(QUERY) && (
+            {!params.get(QUERY) && pathname !== "/location" && (
                 <InitialNotification
                     onClick={(value) => {
                         params.set(QUERY, value);
