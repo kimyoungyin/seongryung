@@ -20,10 +20,10 @@ export const metadata: Metadata = {
 
 export default function RootLayout({
     children,
-    location,
+    locationModal,
 }: Readonly<{
     children: React.ReactNode;
-    location: React.ReactNode;
+    locationModal: React.ReactNode; // @경로 이름 적어줘야!!
 }>) {
     return (
         <html lang="ko">
@@ -47,7 +47,7 @@ export default function RootLayout({
                     </header>
                     <div className="max-w-4xl mx-auto p-6">
                         {children}
-                        {location}
+                        {locationModal}
                     </div>
                 </div>
             </body>
