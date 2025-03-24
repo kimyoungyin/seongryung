@@ -2,7 +2,6 @@
 
 import GobackButton from "@/app/components/GoBackButton";
 import { getBookLocationInfo } from "@/app/utils/actions";
-import { Book } from "@/app/utils/db";
 import Image from "next/image";
 import { useEffect, useMemo, useState } from "react";
 

@@ -9,7 +9,6 @@ import { KeyboardEvent } from "react";
 const QUERY = "query";
 
 export default function InputBox() {
-    const pathName = usePathname();
     const searchParams = useSearchParams();
     // handleSearchParamsChange 뿐만 아니라, 다른 핸들러에도 사용해야 하는데,
     // 여기서 사용하는 리렌더링 관련 훅이 없으므로 최상단에 노출시킴

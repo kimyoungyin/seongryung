@@ -2,7 +2,6 @@
 
 "use client";
 
-import BookCard from "@/app/components/BookCard";
 import GobackButton from "@/app/components/GoBackButton";
 import { getBookLocationAndBookInfo } from "@/app/utils/actions";
 import { Book } from "@/app/utils/db";
