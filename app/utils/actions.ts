@@ -20,3 +20,12 @@ export const getBookLocationInfo = cache(async (bookId: number) => {
 
     return { location, floor };
 });
+
+export const getBookLocationAndBookInfo = cache(async (bookId: number) => {
+    const sql = `SELECT * FROM books WHERE id = ? LIMIT 1`;
+    // SELECT * FROM books WHERE title LIKE %?% 대신 다음과 같이 포함 검색
+    const bookObj = ((await queryDatabase(sql, [bookId])) as Book[])[0];
+    const floor = bookObj.location < 11 || bookObj.location === 78 ? 2 : 1;
+
+    return { ...bookObj, floor };
+});
