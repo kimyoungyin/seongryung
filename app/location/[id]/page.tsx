@@ -49,10 +49,10 @@ export default function Page(props: PageProps) {
                     {/* bookInfo 제목 들어갈 곳 */}
                     <div
                         className={
-                            "mt-8 px-6 text-xl sm:text-2xl text-text-primary"
+                            "w-full mt-8 text-xl sm:text-2xl text-text-primary"
                         }
                     >
-                        <div className="flex gap-2 mb-6">
+                        <div className="w-full flex justify-around items-center gap-2 mb-6">
                             <div className="relative sm:w-24 sm:h-36 w-16 h-24 self-center">
                                 <Image
                                     src={getImageSrc(
@@ -66,7 +66,7 @@ export default function Page(props: PageProps) {
                                     quality={80}
                                 />
                             </div>
-                            <div className="flex-1 flex flex-col sm:flex-row justify-between gap-4">
+                            <div className="flex justify-between  gap-4">
                                 <div>
                                     <h2 className="text-base md:text-lg lg:text-xl font-bold mb-2 text-text-primary">
                                         {bookInfo.title}
@@ -92,16 +92,18 @@ export default function Page(props: PageProps) {
                                 </div>
                             </div>
                         </div>
-                        <strong className="text-2xl sm:text-3xl font-bold">
-                            {bookInfo.floor}
-                        </strong>{" "}
-                        층,{" "}
-                        <strong className="text-2xl sm:text-3xl font-bold">
-                            {bookInfo.location === 78
-                                ? "7~8"
-                                : bookInfo.location}
-                        </strong>{" "}
-                        책장에 있습니다
+                        <div className="text-center">
+                            <strong className="text-2xl sm:text-3xl font-bold">
+                                {bookInfo.floor}
+                            </strong>{" "}
+                            층,{" "}
+                            <strong className="text-2xl sm:text-3xl font-bold">
+                                {bookInfo.location === 78
+                                    ? "7~8"
+                                    : bookInfo.location}
+                            </strong>{" "}
+                            책장에 있습니다
+                        </div>
                     </div>
                     {bookInfo.floor && (
                         <Image
