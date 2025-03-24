@@ -32,6 +32,7 @@ export default function InputBox() {
     const handleKeyDown = (event: KeyboardEvent<HTMLInputElement>) => {
         if (event.key === "Enter") handleSubmit();
     };
+
     return (
         <>
             <div className="max-w-4xl mx-auto mb-6 sm:mb-8 text-[min(calc(((100vw-128px))/20),16px)]">
@@ -56,7 +57,7 @@ export default function InputBox() {
                     </button>
                 </div>
             </div>
-            {!params.get(QUERY) && (
+            {!params.get(QUERY) && pathname.substring(0, 9) !== "/location" && (
                 <InitialNotification
                     onClick={(value) => {
                         params.set(QUERY, value);
