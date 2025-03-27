@@ -47,6 +47,13 @@ export async function generateMetadata({
     };
 }
 
+export const viewport: Viewport = {
+    initialScale: 1.0,
+    userScalable: false,
+    maximumScale: 1,
+    width: "device-width",
+};
+
 export default async function Page(props: {
     searchParams?: Promise<{
         query?: string;
