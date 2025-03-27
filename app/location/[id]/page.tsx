@@ -1,13 +1,15 @@
 // Hard navigation으로 들어왔을 때(새로고침, 혹은 url 직접 접근) 보여줄 화면
 
-"use client";
-
 import GobackButton from "@/app/components/GoBackButton";
-import { getBookLocationAndBookInfo } from "@/app/utils/actions";
+import {
+    getBookLocationAndBookInfo,
+    getBookMetadata,
+} from "@/app/utils/actions";
 import { Book } from "@/app/utils/db";
 import { getImageSrc } from "@/app/utils/util";
+import { Metadata } from "next";
+import Head from "next/head";
 import Image from "next/image";
-import { useEffect, useState } from "react";
 
 const FLOOR_IMAGE_SIZE: {
     readonly [floor: number]: {
@@ -20,30 +22,67 @@ const FLOOR_IMAGE_SIZE: {
 };
 
 interface PageProps {
-    params: Promise<{ id: string }>;
+    params: Promise<{ id: number }>;
 }
 
-export default function Page(props: PageProps) {
-    const [bookInfo, setBookInfo] = useState<(Book & { floor: number }) | null>(
-        null
-    );
+export async function generateMetadata({
+    params,
+}: PageProps): Promise<Metadata> {
+    const bookObj = await getBookMetadata((await params).id);
 
-    useEffect(() => {
-        const getBookData = async () => {
-            const params = await props.params;
-            // 비동기적으로 책 정보와 위치를 db에 검색 후 없으면 Redirect
+    const title = `${bookObj.title}${
+        bookObj.author ? ` | ${bookObj.author}` : ""
+    } - 승룡이네집 도서 검색 시스템`;
 
-            // 동적 라우팅은 비동기적이므로
-            // npx @next/codemod@latest next-async-request-api --force
-            const bookId = Number(await params.id);
-            setBookInfo(await getBookLocationAndBookInfo(bookId));
-        };
-        getBookData();
-    }, []);
+    return {
+        title,
+        icons: {
+            icon: "/seongryoung-sm-round.jpeg",
+        },
+        keywords: [
+            // 살짝 책 제목 집어 넣어주기
+            bookObj.title,
+            "강풀만화거리",
+            "강풀",
+            "승룡이네집",
+            "만화카페",
+            "카페",
+            "만화방",
+        ],
+        openGraph: {
+            title,
+            siteName: "승룡이네집 도서 검색 시스템",
+            locale: "ko_KR",
+            type: "website",
+            images: [
+                {
+                    url: getImageSrc(bookObj.location, bookObj.id),
+                    width: 96,
+                    height: 144,
+                },
+                { url: "/seongryoung-base.jpeg", width: 225, height: 225 },
+            ],
+        },
+    };
+}
+
+export default async function Page(props: PageProps) {
+    const params = await props.params;
+    // 비동기적으로 책 정보와 위치를 db에 검색 후 없으면 Redirect
+
+    // 동적 라우팅은 비동기적이므로
+    // npx @next/codemod@latest next-async-request-api --force
+    const bookId = Number(await params.id);
+    const bookInfo = (await getBookLocationAndBookInfo(bookId)) as Book & {
+        floor: number;
+    };
 
     return (
-        <div className="mx-auto transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:max-w-lg px-4 flex flex-col items-center">
-            {bookInfo && (
+        <>
+            <Head>
+                <title>Heloo</title>
+            </Head>
+            <div className="mx-auto transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:max-w-lg px-4 flex flex-col items-center">
                 <>
                     {/* bookInfo 제목 들어갈 곳 */}
                     <div
@@ -104,24 +143,22 @@ export default function Page(props: PageProps) {
                             책장에 있습니다
                         </div>
                     </div>
-                    {bookInfo.floor && (
-                        <Image
-                            src={`/location${bookInfo.location}.png`}
-                            alt={
-                                bookInfo.location +
-                                `이 있는 ${bookInfo.floor}층 평면도`
-                            }
-                            width={FLOOR_IMAGE_SIZE[bookInfo.floor].width}
-                            height={FLOOR_IMAGE_SIZE[bookInfo.floor].height}
-                            className="w-[80%] my-4"
-                            priority={true}
-                        />
-                    )}
+                    <Image
+                        src={`/location${bookInfo.location}.png`}
+                        alt={
+                            bookInfo.location +
+                            `이 있는 ${bookInfo.floor}층 평면도`
+                        }
+                        width={FLOOR_IMAGE_SIZE[bookInfo.floor].width}
+                        height={FLOOR_IMAGE_SIZE[bookInfo.floor].height}
+                        className="w-[80%] my-4"
+                        priority={true}
+                    />
                     <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                         <GobackButton toHome />
                     </div>
                 </>
-            )}
-        </div>
+            </div>
+        </>
     );
 }
