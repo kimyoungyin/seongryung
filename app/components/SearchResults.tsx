@@ -30,9 +30,9 @@ export default async function SearchResults({ query }: { query: string }) {
 
                         <div className="py-4 px-6 bg-skeleton/30 rounded-lg inline-block w-[90%]">
                             <div className="text-[min(calc(((100vw-84px-1.5rem))/28),16px)] text-text-primary/80 flex flex-col gap-1">
-                                <span>✓ 책 제목의 일부만 입력해보세요</span>
-                                <span>✓ 띄어쓰기를 정확히 해보세요</span>
-                                <span>✓ 영어 제목은 한글로 변경해보세요</span>
+                                <span>책 제목의 일부만 입력해보세요</span>
+                                <span>띄어쓰기를 정확히 해보세요</span>
+                                <span>영어 제목은 한글로 변경해보세요</span>
                             </div>
                         </div>
                     </div>
