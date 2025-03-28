@@ -33,10 +33,15 @@ export default function InputBox() {
         if (event.key === "Enter") handleSubmit();
     };
 
+    const onKeywordClick = (keyword: string) => {
+        params.set(QUERY, keyword.trim());
+        push(`${pathname}?${params.toString()}`);
+    };
+
     return (
         <>
             <div className="max-w-4xl mx-auto mb-6 sm:mb-8 text-[min(calc(((100vw-128px))/20),16px)]">
-                <div className="flex gap-2">
+                <div className="flex gap-2 mb-4">
                     <input
                         type="text"
                         maxLength={100}
@@ -56,14 +61,27 @@ export default function InputBox() {
                         검색
                     </button>
                 </div>
+                <div className="ml-3 flex items-center gap-2 text-muted-foreground text-text-secondary text-[min(calc(((100vw-84px-1.5rem))/24),14px)]">
+                    추천 검색어:
+                    <div className="flex flex-wrap gap-3">
+                        {["바보", "그대를 사랑합니다", "무빙"].map(
+                            (keyword) => (
+                                <button
+                                    key={keyword}
+                                    onClick={() => onKeywordClick(keyword)}
+                                    className="px-2 py-1 sm:px-4 sm:py-2 bg-button-bg/10 text-text-primary bg-button-bg
+						rounded-full hover:bg-text-primary/20 transition-colors
+						active:ring-2 active:ring-text-primary/50 active:bg-text-primary/50"
+                                >
+                                    {keyword}
+                                </button>
+                            )
+                        )}
+                    </div>
+                </div>
             </div>
             {!params.get(QUERY) && pathname.substring(0, 9) !== "/location" && (
-                <InitialNotification
-                    onClick={(value) => {
-                        params.set(QUERY, value.trim());
-                        push(`${pathname}?${params.toString()}`);
-                    }}
-                />
+                <InitialNotification />
             )}
         </>
     );

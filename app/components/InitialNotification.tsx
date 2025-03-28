@@ -1,10 +1,6 @@
-import { HelpCircle, SearchCheck } from "lucide-react";
+import { SearchCheck } from "lucide-react";
 
-export default function InitialNotification({
-    onClick,
-}: {
-    onClick: (value: string) => void;
-}) {
+export default function InitialNotification() {
     return (
         <div
             className="bg-guide-bg/50 border-none shadow-guide 
@@ -16,27 +12,6 @@ export default function InitialNotification({
                 <h2 className="text-[min(calc(((100vw-128px))/9),24px)] font-bold tracking-tighter">
                     도서 검색 가이드
                 </h2>
-            </div>
-
-            {/* 키워드 추천 */}
-            <div className="space-y-4 mb-8">
-                <p className="flex items-center gap-2 text-muted-foreground text-text-secondary text-[min(calc(((100vw-84px-1.5rem))/24),18px)]">
-                    <HelpCircle className="w-5 h-5" size={14} />
-                    예시 검색어를 클릭하거나 직접 입력해보세요
-                </p>
-                <div className="flex flex-wrap gap-3 text-[min(calc(100vw/30),16px)]">
-                    {["바보", "그대를 사랑합니다", "무빙"].map((keyword) => (
-                        <button
-                            key={keyword}
-                            onClick={() => onClick(keyword)}
-                            className="px-2 py-1 sm:px-4 sm:py-2 bg-button-bg/10 text-text-primary bg-button-bg
-					rounded-full hover:bg-text-primary/20 transition-colors
-					focus:ring-2 focus:ring-text-primary/50 focus:bg-text-primary/50"
-                        >
-                            {keyword}
-                        </button>
-                    ))}
-                </div>
             </div>
 
             {/* 사용 팁 */}
