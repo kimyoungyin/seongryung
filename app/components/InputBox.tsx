@@ -19,7 +19,7 @@ export default function InputBox() {
     const handleSearchParamsChange = (term: string) => {
         const trimmedTerm = term.trim();
         if (trimmedTerm) {
-            params.set(QUERY, term);
+            params.set(QUERY, trimmedTerm);
         } else {
             params.delete(QUERY);
         }
@@ -60,7 +60,7 @@ export default function InputBox() {
             {!params.get(QUERY) && pathname.substring(0, 9) !== "/location" && (
                 <InitialNotification
                     onClick={(value) => {
-                        params.set(QUERY, value);
+                        params.set(QUERY, value.trim());
                         push(`${pathname}?${params.toString()}`);
                     }}
                 />
