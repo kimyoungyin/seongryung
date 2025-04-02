@@ -22,11 +22,11 @@
 -   DB: [AWS RDS](https://aws.amazon.com/ko/rds/)([mysql](https://www.mysql.com/)) - 모듈 [mysql2](https://www.npmjs.com/package/mysql2)(^3.12.0)
 
     <details>
-      <summary>선택 이유</summary>
-          - nosql vs sql
-              - ‘도서’라는 규격화된 데이터: nosql보다 눈에 띄게 성능이 뒤쳐지거나 하지 않으면 sql을 사용하려고 했다.
-              - 1000개 이하의 데이터 수: 소량의 데이터이기에 보통 Nosql이 sql보다 보통 CRUD 연산이 빠르다 하더라도 큰 차이가 없음.
-              - ‘검색’이기에 select 쿼리를 주로 사용: Id로 읽는 경우는 mongodb가 매우 빠르지만 그게 아닌 ‘검색’은 mongodb와 10ms 정도 차이만 있음
+    <summary>선택 이유</summary>
+    - nosql vs sql
+    	- ‘도서’라는 규격화된 데이터: nosql보다 눈에 띄게 성능이 뒤쳐지거나 하지 않으면 sql을 사용하려고 했다.
+    	- 1000개 이하의 데이터 수: 소량의 데이터이기에 보통 Nosql이 sql보다 보통 CRUD 연산이 빠르다 하더라도 큰 차이가 없음.
+    	- ‘검색’이기에 select 쿼리를 주로 사용: Id로 읽는 경우는 mongodb가 매우 빠르지만 그게 아닌 ‘검색’은 mongodb와 10ms 정도 차이만 있음
 
     ![SQL vs NoSQL 비교](https://github.com/user-attachments/assets/9a2a5368-0ec0-4f48-9e22-3ed93059be75)
 
@@ -36,11 +36,11 @@
 
     -   mysql vs postgresql
 
-            대규모 데이트 셋, 복잡한 쿼리는 postgresql이 빠르지만, 읽기 전용 명령어는 mysql이 더 빠르기 때문에 mysql로 선택했다(대규모도 아니고).
+        대규모 데이트 셋, 복잡한 쿼리는 postgresql이 빠르지만, 읽기 전용 명령어는 mysql이 더 빠르기 때문에 mysql로 선택했다(대규모도 아니고).
 
-                [https://www.youtube.com/watch?v=-PbP1TcD94Q&t=527s](https://www.youtube.com/watch?v=-PbP1TcD94Q&t=527s)
+        [https://www.youtube.com/watch?v=-PbP1TcD94Q&t=527s](https://www.youtube.com/watch?v=-PbP1TcD94Q&t=527s)
 
-            [PostgreSQL과 MySQL 비교: 주요 차이점](https://www.integrate.io/ko/blog/postgresql-vs-mysql-which-one-is-better-for-your-use-case-ko/#five)
+        [PostgreSQL과 MySQL 비교: 주요 차이점](https://www.integrate.io/ko/blog/postgresql-vs-mysql-which-one-is-better-for-your-use-case-ko/#five)
 
         </details>
 
