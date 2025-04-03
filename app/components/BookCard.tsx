@@ -1,7 +1,6 @@
 import { Book } from "@/app/utils/db";
 import { getImageSrc } from "@/app/utils/util";
 import Image from "next/image";
-import Link from "next/link";
 import ToLocationButton from "@/app/components/ToLocationButton";
 
 export default function BookCard({

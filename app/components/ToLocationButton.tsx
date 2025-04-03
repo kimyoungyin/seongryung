@@ -10,9 +10,11 @@ export default function ToLocationButton({ bookId }: { bookId: number }) {
     const pathname = usePathname();
 
     useEffect(() => {
-        pathname !== "/" && setIsLoading(false);
+        if (pathname !== "/") {
+            setIsLoading(false); // 함수 호출로 수정
+        }
     }, [pathname]);
-    console.log(isLoading);
+
     return (
         <Link
             href={`/location/${bookId}`}
