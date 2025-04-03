@@ -12,13 +12,15 @@ export default function ToLocationButton({ bookId }: { bookId: number }) {
     useEffect(() => {
         pathname !== "/" && setIsLoading(false);
     }, [pathname]);
-
+    console.log(isLoading);
     return (
         <Link
             href={`/location/${bookId}`}
-            className="bg-skeleton text-text-primary px-4 py-2 rounded-md hover:bg-skeleton-hover transition-colors whitespace-nowrap inline-flex items-center gap-2 disabled:opacity-50"
+            className={
+                "bg-skeleton text-text-primary px-4 py-2 rounded-md hover:bg-skeleton-hover transition-colors whitespace-nowrap inline-flex items-center gap-2 " +
+                (isLoading ? "cursor-not-allowed opacity-50" : "")
+            }
             onClick={() => setIsLoading(true)}
-            disabled={isLoading}
             aria-label="위치 보기"
             aria-disabled={isLoading}
         >
