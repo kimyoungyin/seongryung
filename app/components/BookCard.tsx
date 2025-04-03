@@ -2,6 +2,7 @@ import { Book } from "@/app/utils/db";
 import { getImageSrc } from "@/app/utils/util";
 import Image from "next/image";
 import Link from "next/link";
+import ToLocationButton from "@/app/components/ToLocationButton";
 
 export default function BookCard({
     bookObj,
@@ -50,12 +51,7 @@ export default function BookCard({
                     </div>
                     {!isAboutLocation && (
                         <div className="self-end sm:self-center text-xs md:text-sm lg:text-md">
-                            <Link
-                                href={`/location/${bookObj.id}`}
-                                className="bg-skeleton text-text-primary px-4 py-2 rounded-md hover:bg-skeleton-hover transition-colors whitespace-nowrap"
-                            >
-                                위치 보기 →
-                            </Link>
+                            <ToLocationButton bookId={bookObj.id} />
                         </div>
                     )}
                 </div>
