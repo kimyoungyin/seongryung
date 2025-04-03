@@ -152,7 +152,6 @@ export default async function Page(props: PageProps) {
                         width={FLOOR_IMAGE_SIZE[bookInfo.floor].width}
                         height={FLOOR_IMAGE_SIZE[bookInfo.floor].height}
                         className="w-[80%] my-4"
-                        priority={true}
                     />
                     <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                         <GobackButton toHome />
