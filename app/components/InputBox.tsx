@@ -83,7 +83,7 @@ export default function InputBox() {
                         {isSearching ? (
                             <>
                                 <Loader2 className="h-4 w-4 animate-spin" />
-                                <span>위치 찾는 중...</span>
+                                <span>도서 찾는 중...</span>
                             </>
                         ) : (
                             <>
