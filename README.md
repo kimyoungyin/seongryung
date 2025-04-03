@@ -440,6 +440,8 @@ const LOCATION_POSITION: {
 <details>
 <summary>2025.04.03: loading UI 및 이미지 lazy loading으로 UX 개선</summary>
 
+[pull request: refactor/loadingux](https://github.com/kimyoungyin/seongryung/pull/19)
+
 -   location 조감도 `Image`의 `priority`를 비활성화하여 lazy loading 처리: 라우트 렌더링 시작 자체를 빠르게 개선
 
 -   loading UI로 UX 개선
