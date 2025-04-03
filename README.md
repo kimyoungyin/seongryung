@@ -23,16 +23,18 @@
 
     <details>
     <summary>선택 이유</summary>
-    - nosql vs sql
-    	- ‘도서’라는 규격화된 데이터: nosql보다 눈에 띄게 성능이 뒤쳐지거나 하지 않으면 sql을 사용하려고 했다.
-    	- 1000개 이하의 데이터 수: 소량의 데이터이기에 보통 Nosql이 sql보다 보통 CRUD 연산이 빠르다 하더라도 큰 차이가 없음.
-    	- ‘검색’이기에 select 쿼리를 주로 사용: Id로 읽는 경우는 mongodb가 매우 빠르지만 그게 아닌 ‘검색’은 mongodb와 10ms 정도 차이만 있음
 
-    ![SQL vs NoSQL 비교](https://github.com/user-attachments/assets/9a2a5368-0ec0-4f48-9e22-3ed93059be75)
+    -   nosql vs sql
 
-    [SQL vs NoSQL 비교 영상](https://www.youtube.com/watch?v=bluQwqMgTsw&t=674s)
+        -   ‘도서’라는 규격화된 데이터: nosql보다 눈에 띄게 성능이 뒤쳐지거나 하지 않으면 sql을 사용하려고 했다.
+        -   1000개 이하의 데이터 수: 소량의 데이터이기에 보통 Nosql이 sql보다 보통 CRUD 연산이 빠르다 하더라도 큰 차이가 없음.
+        -   ‘검색’이기에 select 쿼리를 주로 사용: Id로 읽는 경우는 mongodb가 매우 빠르지만 그게 아닌 ‘검색’은 mongodb와 10ms 정도 차이만 있음
 
-    [(논문번역) SQL vs NoSQL: A Performance Comparison](https://velog.io/@park2348190/%EB%85%BC%EB%AC%B8%EB%B2%88%EC%97%AD-SQL-vs-NoSQL-A-Performance-Comparison)
+            ![SQL vs NoSQL 비교](https://github.com/user-attachments/assets/9a2a5368-0ec0-4f48-9e22-3ed93059be75)
+
+            [SQL vs NoSQL 비교 영상](https://www.youtube.com/watch?v=bluQwqMgTsw&t=674s)
+
+            [(논문번역) SQL vs NoSQL: A Performance Comparison](https://velog.io/@park2348190/%EB%85%BC%EB%AC%B8%EB%B2%88%EC%97%AD-SQL-vs-NoSQL-A-Performance-Comparison)
 
     -   mysql vs postgresql
 
@@ -43,6 +45,7 @@
         [PostgreSQL과 MySQL 비교: 주요 차이점](https://www.integrate.io/ko/blog/postgresql-vs-mysql-which-one-is-better-for-your-use-case-ko/#five)
 
         </details>
+        <br />
 
     -   Storage: [AWS S3](https://www.googleadservices.com/pagead/aclk?sa=L&ai=DChcSEwiOrbzNobaMAxVTVQ8CHQs6BggYABAAGgJ0Yg&ae=2&aspm=1&co=1&ase=5&gclid=Cj0KCQjwna6_BhCbARIsALId2Z1lXcE0BEUn0cJv6SioSEO7FnysY_s80CZmQS55ArV7_ewMjwL67uUaAid7EALw_wcB&ohost=www.google.com&cid=CAESVuD2nRkIUyE7y312wUFvQqGn1eWSCkjaK28yT5hxrUEoJZRC29RRKXCK92DCMT01Mmcq8x_InO7BiBScvRJxSAFc-5QqoBP9TTKBxwY3NbV2zOF8zFcu&sig=AOD64_08-Hiu7Fr9vGLXfgKSKB2jRoRtrQ&q&adurl&ved=2ahUKEwjEibfNobaMAxXWi68BHZdFIakQ0Qx6BAgTEAE)
     -   Deployment, Analytics: [Vercel](https://vercel.com/)
