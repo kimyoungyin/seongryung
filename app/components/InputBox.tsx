@@ -11,7 +11,9 @@ const QUERY = "query";
 
 export default function InputBox() {
     const [isSearching, setIsSearching] = useState(false);
-    const [searchingKeyword, setSearchingKeyword] = useState(null);
+    const [searchingKeyword, setSearchingKeyword] = useState<string | null>(
+        null
+    );
     // 현재 검색 쿼리
     const searchParams = useSearchParams();
     // 검색할 새로운 쿼리
