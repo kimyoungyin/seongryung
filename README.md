@@ -436,3 +436,26 @@ const LOCATION_POSITION: {
 <br />
 
 2025.03.28: 피드백 개선(키워드 상단으로), 빈 문자열 포함 문제 해결, vercel analytics, speedInsights 추가, master 브랜치 배포(v1.0)
+
+<details>
+<summary>2025.04.03: loading UI 및 이미지 lazy loading으로 UX 개선</summary>
+
+[pull request: refactor/loadingux](https://github.com/kimyoungyin/seongryung/pull/19)
+
+-   location 조감도 `Image`의 `priority`를 비활성화하여 lazy loading 처리: 라우트 렌더링 시작 자체를 빠르게 개선
+
+-   loading UI로 UX 개선
+
+    -   검색어 입력 후 keydown 혹은 검색 버튼 클릭
+
+        <img width="331" alt="스크린샷 2025-04-03 오후 3 26 22" src="https://github.com/user-attachments/assets/25cb30fe-cf21-4764-8fdc-5c894600cd2f" />
+
+    -   추천 검색어 클릭
+
+        <img width="417" alt="스크린샷 2025-04-03 오후 2 56 13" src="https://github.com/user-attachments/assets/c53ce3e5-d46b-4f34-ae06-62f2a7f9a189" />
+
+    -   '위치 보기' 클릭: a 태그라 dynamic className 사용
+
+        <img width="420" alt="스크린샷 2025-04-03 오후 3 14 53" src="https://github.com/user-attachments/assets/806cd977-5adc-45cd-8fd8-94ab8a8e1792" />
+
+</details>
