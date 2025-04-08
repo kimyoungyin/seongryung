@@ -109,10 +109,10 @@
 
 ## 5. 개발 로그 및 학습 내용
 
-2025.03.03: 엑셀 데이터 rds에 삽입
+<strong>2025.03.03</strong>: 엑셀 데이터 rds에 삽입
 
 <details>
-<summary>2025.03.04: IAM cli, db 연결</summary>
+<summary><strong>2025.03.04</strong>: IAM cli, db 연결</summary>
 
 -   iam 사용자 생성(키들은 프로젝트 .env에) → cli 로그인 → cli를 통해 s3 버킷 퍼블릭 읽기 되도록 한 후 이미지들 업로드
 -   rds를 nextjs와 연결 후 `SELECT` 쿼리 작성
@@ -121,7 +121,7 @@
 <br />
 
 <details>
-<summary>2025.03.05: 퍼블릭 읽기와 한글 파일명 문제 해결, 검색어 ‘포함’ 검색 쿼리</summary>
+<summary><strong>2025.03.05</strong>: 퍼블릭 읽기와 한글 파일명 문제 해결, 검색어 ‘포함’ 검색 쿼리</summary>
 
 -   퍼블릭 읽기에 대한 것은 해결했으나(access denied 문제), 객체(이미지) url로 접근 시 `NoSuchKey` 에러가 계속 발생. 이는 해당 객체의 주소가 잘못되었거나 해당 파일 자체가 없을 경우 발생하는데, 갖가지 노력 끝에 **한글 파일명 때문임**을 알게 되었음. 아무리 `encodeURIcomponent` 와 같은 API를 사용하더라도 aws에서 한글을 인코딩하는 방식과 달라 이미지 주소명이 일치하지 않았던 것. 결국 **한글 파일명을 모두 DB에 저장된 데이터의 id값으로 전부 변경**하였더니 제대로 동작함. 이에 따라 필요없어진 table column인 `image_url`을 제거하였으며, id를 통해 해당 이미지 src를 생성함
 
@@ -167,7 +167,7 @@
 <br />
 
 <details>
-<summary>2025.03.06: 프리티어 기간이 지나 aws 계정 마이그레이션(S3)</summary>
+<summary><strong>2025.03.06</strong>: 프리티어 기간이 지나 aws 계정 마이그레이션(S3)</summary>
 
 s3는 chatgpt와 간단 해결
 
@@ -177,7 +177,7 @@ s3는 chatgpt와 간단 해결
 <br />
 
 <details>
-<summary>2025.03.07~2024.03.10: aws 계정 마이그레이션(rds)</summary>
+<summary><strong>2025.03.07</strong>~2024.03.10: aws 계정 마이그레이션(rds)</summary>
 
 기존 rds가 ‘암호화’가 되어있으면 마이그레이션을 하기 위해서 암호화 키(kms)를 공유해야 하는데, 이게 aws에서 관리하는 키인 경우 다른 계정과 공유가 안돼서, 스냅샷을 이용한 마이그레이션이 안됨.
 
@@ -197,7 +197,7 @@ s3는 chatgpt와 간단 해결
 <br />
 
 <details>
-<summary>2025.03.11: `useState` 를 사용하지 않고 SSR 방식으로 검색 구현, detail 페이지 blur skeleton</summary>
+<summary><strong>2025.03.11</strong>: `useState` 를 사용하지 않고 SSR 방식으로 검색 구현, detail 페이지 blur skeleton</summary>
 
 1. 검색 기능
     - 참고 공식문서
@@ -217,7 +217,7 @@ s3는 chatgpt와 간단 해결
 <br />
 
 <details>
-<summary>2025.03.12: tailwind와 책장 조감도 이용하여 특정 위치 표시, 세부 정보는 제거</summary>
+<summary><strong>2025.03.12</strong>: tailwind와 책장 조감도 이용하여 특정 위치 표시, 세부 정보는 제거</summary>
 
 템플릿 리터럴로 tailwind className을 동적으로 변환할 때 속성 전체를 온전히 사용해야 함
 
@@ -251,7 +251,7 @@ const LOCATION_POSITION: {
 <br />
 
 <details>
-<summary>2025.03.13: tailwind 초기 테마 세팅 및 SearchResults 스타일링 in feat/styles branch</summary>
+<summary><strong>2025.03.13</strong>: tailwind 초기 테마 세팅 및 SearchResults 스타일링 in feat/styles branch</summary>
 
 -   tailwind 초기 테마 세팅
     [https://github.com/kimyoungyin/seongryung/commit/7f0924b0d5a10085d3f6ba2fe53294918c4c6211](https://github.com/kimyoungyin/seongryung/commit/7f0924b0d5a10085d3f6ba2fe53294918c4c6211)
@@ -303,7 +303,7 @@ const LOCATION_POSITION: {
 <br />
 
 <details>
-<summary>2025.03.14: 컴포넌트 스타일링 with AI</summary>
+<summary><strong>2025.03.14</strong>: 컴포넌트 스타일링 with AI</summary>
 
 헤더의 승룡이 캐릭터 사진, 책장 조감도 사진들은 발전 필요
 
@@ -313,7 +313,7 @@ const LOCATION_POSITION: {
 <br />
 
 <details>
-<summary>2025.03.17: 모바일 사이즈에 맞도록 반응형 사이즈 조절(텍스트, 여백)</summary>
+<summary><strong>2025.03.17</strong>: 모바일 사이즈에 맞도록 반응형 사이즈 조절(텍스트, 여백)</summary>
 
 -   vw, px, rem 등을 이용
 -   계산 방식이 동일해서 유틸 함수로 만들어 tailwind className으로 사용하려고 하다가 그게 tailwind에서 인식을 못하므로 취소함
@@ -322,7 +322,7 @@ const LOCATION_POSITION: {
 <br />
 
 <details>
-<summary>2025.03.18~2025.03.19: parallel route로 만든 모달 형태로 위치 표시하도록 변경</summary>
+<summary><strong>2025.03.18</strong>~<strong>2025.03.19</strong>: parallel route로 만든 모달 형태로 위치 표시하도록 변경</summary>
 
 1. @location → location → [id] → page.tsx에 detail 페이지에 사용했던 것 이전하면서 모달화. 이 때, BookCard는 제외함
 
@@ -366,10 +366,10 @@ const LOCATION_POSITION: {
     </details>
     <br />
 
-    2025.03.20: 스크롤바 삭제
+    <strong>2025.03.20</strong>: 스크롤바 삭제
 
 <details>
-<summary>2025.03.21~2025.03.24: 인터셉팅 Route로 hard navigation에 대응</summary>
+<summary><strong>2025.03.21</strong>~<strong>2025.03.24</strong>: 인터셉팅 Route로 hard navigation에 대응</summary>
 
 -   parallel route 명 안겹치게 locationModal로 변경 후 **layout에도 변경된 이름 적용**
 
@@ -404,7 +404,7 @@ const LOCATION_POSITION: {
 <br />
 
 <details>
-<summary>2025.03.25~2025.0327: 동적/정적 메타데이터(metadata) 적용</summary>
+<summary><strong>2025.03.25</strong>~<strong>2025.03.27:</strong> 동적/정적 메타데이터(metadata) 적용</summary>
 
 1. 기존 최상단에 존재하는 `favicon.ico` 제거
 2. public 폴더에 추가한 이미지 경로를 메타데이터 설정 시 추가
@@ -435,10 +435,10 @@ const LOCATION_POSITION: {
 </details>
 <br />
 
-2025.03.28: 피드백 개선(키워드 상단으로), 빈 문자열 포함 문제 해결, vercel analytics, speedInsights 추가, master 브랜치 배포(v1.0)
+<strong>2025.03.28</strong>: 피드백 개선(키워드 상단으로), 빈 문자열 포함 문제 해결, vercel analytics, speedInsights 추가, master 브랜치 배포(v1.0)
 
 <details>
-<summary>2025.04.03: loading UI 및 이미지 lazy loading으로 UX 개선</summary>
+<summary><strong>2025.04.03</strong>: loading UI 및 이미지 lazy loading으로 UX 개선</summary>
 
 [pull request: refactor/loadingux](https://github.com/kimyoungyin/seongryung/pull/19)
 
@@ -462,7 +462,7 @@ const LOCATION_POSITION: {
 <br />
 
 <details>
-<summary>2025.04.04: 새롭게 디자인된 책장 위치 이미지 반영하며 이상한 책장 번호 관련 사항 수정</summary>
+<summary><strong>2025.04.04</strong>: 새롭게 디자인된 책장 위치 이미지 반영하며 이상한 책장 번호 관련 사항 수정</summary>
 
 -   불필요한 책장 번호 구분 합치거나, 이상하게 합쳐진 책장 번호를 분리하였다. 또한 DB 내 location 컬럼 데이터와 S3 버킷 내 이미지 객체의 위치를 location 번호에 맞게 변경해주었다.
     -   5 -> 4로(db location 값을 5를 4로 변경 완료, 사진 옮기기 완료)
@@ -471,3 +471,6 @@ const LOCATION_POSITION: {
     -   결론으로 남은 책장(과 그 이미지): 1 2 3 4 6 7 9 11 12 13 14
 
 </details>
+<br />
+
+<strong>2025.04.08</strong>: 이미지 사이즈를 최대한 크게 보여주도록 조정 및 hard navigation location 페이지에서는 뒤로 가기 버튼을 왼쪽 위로 변경
