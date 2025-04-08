@@ -5,21 +5,10 @@ import {
     getBookLocationAndBookInfo,
     getBookMetadata,
 } from "@/app/utils/actions";
-import { Book } from "@/app/utils/db";
 import { getImageSrc } from "@/app/utils/util";
 import { Metadata } from "next";
-import Head from "next/head";
 import Image from "next/image";
-
-const FLOOR_IMAGE_SIZE: {
-    readonly [floor: number]: {
-        readonly width: number;
-        readonly height: number;
-    };
-} = {
-    1: { width: 476, height: 483 },
-    2: { width: 794, height: 495 },
-};
+import { LOCATION_IMAGE_SIZE } from "@/app/utils/constants";
 
 interface PageProps {
     params: Promise<{ id: number }>;
@@ -73,17 +62,15 @@ export default async function Page(props: PageProps) {
     // 동적 라우팅은 비동기적이므로
     // npx @next/codemod@latest next-async-request-api --force
     const bookId = Number(await params.id);
-    const bookInfo = (await getBookLocationAndBookInfo(bookId)) as Book & {
-        floor: number;
-    };
+    const bookInfo = await getBookLocationAndBookInfo(bookId);
 
     return (
         <>
-            <Head>
-                <title>Heloo</title>
-            </Head>
-            <div className="mx-auto transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:max-w-lg px-4 flex flex-col items-center">
+            <div className="mx-auto overflow-hidden rounded-lg bg-white py-4 text-left shadow-xl sm:my-8 sm:max-w-3xl px-4 flex flex-col items-center">
                 <>
+                    <div className="self-start py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                        <GobackButton toHome />
+                    </div>
                     {/* bookInfo 제목 들어갈 곳 */}
                     <div
                         className={
@@ -130,32 +117,14 @@ export default async function Page(props: PageProps) {
                                 </div>
                             </div>
                         </div>
-                        <div className="text-center">
-                            <strong className="text-2xl sm:text-3xl font-bold">
-                                {bookInfo.floor}
-                            </strong>{" "}
-                            층,{" "}
-                            <strong className="text-2xl sm:text-3xl font-bold">
-                                {bookInfo.location === 78
-                                    ? "7~8"
-                                    : bookInfo.location}
-                            </strong>{" "}
-                            책장에 있습니다
-                        </div>
                     </div>
                     <Image
-                        src={`/location${bookInfo.location}.png`}
-                        alt={
-                            bookInfo.location +
-                            `이 있는 ${bookInfo.floor}층 평면도`
-                        }
-                        width={FLOOR_IMAGE_SIZE[bookInfo.floor].width}
-                        height={FLOOR_IMAGE_SIZE[bookInfo.floor].height}
-                        className="w-[80%] my-4"
+                        src={`/location${bookInfo.location}.jpg`}
+                        alt={bookInfo.title + `이 있는 책장`}
+                        width={LOCATION_IMAGE_SIZE.width}
+                        height={LOCATION_IMAGE_SIZE.height}
+                        className="w-full mt-4"
                     />
-                    <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                        <GobackButton toHome />
-                    </div>
                 </>
             </div>
         </>
