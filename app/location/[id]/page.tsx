@@ -7,7 +7,6 @@ import {
 } from "@/app/utils/actions";
 import { getImageSrc } from "@/app/utils/util";
 import { Metadata } from "next";
-import Head from "next/head";
 import Image from "next/image";
 import { LOCATION_IMAGE_SIZE } from "@/app/utils/constants";
 
@@ -67,11 +66,11 @@ export default async function Page(props: PageProps) {
 
     return (
         <>
-            <Head>
-                <title>Heloo</title>
-            </Head>
-            <div className="mx-auto transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:max-w-lg px-4 flex flex-col items-center">
+            <div className="mx-auto overflow-hidden rounded-lg bg-white py-4 text-left shadow-xl sm:my-8 sm:max-w-3xl px-4 flex flex-col items-center">
                 <>
+                    <div className="self-start py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                        <GobackButton toHome />
+                    </div>
                     {/* bookInfo 제목 들어갈 곳 */}
                     <div
                         className={
@@ -124,11 +123,8 @@ export default async function Page(props: PageProps) {
                         alt={bookInfo.title + `이 있는 책장`}
                         width={LOCATION_IMAGE_SIZE.width}
                         height={LOCATION_IMAGE_SIZE.height}
-                        className="w-[80%] my-4"
+                        className="w-full mt-4"
                     />
-                    <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
-                        <GobackButton toHome />
-                    </div>
                 </>
             </div>
         </>

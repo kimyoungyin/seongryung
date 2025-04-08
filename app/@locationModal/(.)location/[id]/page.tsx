@@ -51,8 +51,8 @@ export default function Page(props: PageProps) {
             ></div>
 
             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
-                <div className="flex min-h-full justify-center p-4 text-center items-center sm:p-0">
-                    <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg px-4 flex flex-col items-center">
+                <div className="flex min-h-full justify-center p-4 text-center items-center">
+                    <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-3xl px-4 flex flex-col items-center">
                         {bookInfo && (
                             <>
                                 {bookInfo.location && (
@@ -61,10 +61,10 @@ export default function Page(props: PageProps) {
                                         alt={bookInfo.location + `번 책장 위치`}
                                         width={LOCATION_IMAGE_SIZE.width}
                                         height={LOCATION_IMAGE_SIZE.height}
-                                        className="w-[80%]"
+                                        className="w-full"
                                     />
                                 )}
-                                <div className="bg-gray-50 px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
+                                <div className="px-4 py-3 sm:flex sm:flex-row-reverse sm:px-6">
                                     <GobackButton />
                                 </div>
                             </>
