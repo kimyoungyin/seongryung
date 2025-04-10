@@ -474,3 +474,11 @@ const LOCATION_POSITION: {
 <br />
 
 <strong>2025.04.08</strong>: 이미지 사이즈를 최대한 크게 보여주도록 조정 및 hard navigation location 페이지에서는 뒤로 가기 버튼을 왼쪽 위로 변경
+
+<details>
+<summary><strong>2025.04.09</strong>: soft navigation location 이미지 로드되기 전 로딩 박스 보여주어 layout shift 방지</summary>
+
+padding-top으로 aspect-ratio에 맞게 빈 박스를 만들 수 있다!
+
+</details>
+<br />
