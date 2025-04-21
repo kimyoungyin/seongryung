@@ -474,11 +474,19 @@ const LOCATION_POSITION: {
 <br />
 
 <strong>2025.04.08</strong>: 이미지 사이즈를 최대한 크게 보여주도록 조정 및 hard navigation location 페이지에서는 뒤로 가기 버튼을 왼쪽 위로 변경
-
-<details>
+<br />
+<details>    
 <summary><strong>2025.04.09</strong>: soft navigation location 이미지 로드되기 전 로딩 박스 보여주어 layout shift 방지</summary>
 
 padding-top으로 aspect-ratio에 맞게 빈 박스를 만들 수 있다!
 
+</details>
+<br />
+
+<details>    
+<summary><strong>2025.04.21</strong>: layout shift 방지 박스 오차 수정</summary>
+
+layout shift 방지 박스 렌더링 시에는 margin-top이 0.75rem 존재하다가 Image 렌더링 후 사라지면서 비율이 맞지 않는 문제 발생하여, 해당 margin-top에 해당하는 만큼 박스 높이에서 빼주었다.
+
 </details>
 <br />
