@@ -8,8 +8,8 @@ import { LOCATION_IMAGE_SIZE } from "@/app/utils/constants";
 interface PageProps {
     params: Promise<{ id: string }>;
 }
-
-const LOCATION_IMAGE_RATIO_CLASSNAME = "pt-[79.67754031%]";
+// mt-3(0.75rem)을 빼기
+const LOCATION_IMAGE_RATIO_CLASSNAME = "pt-[calc(79.67754031%-0.75rem)]";
 
 export default function Page(props: PageProps) {
     const [bookInfo, setBookInfo] = useState<{
