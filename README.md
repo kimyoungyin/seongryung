@@ -1,3 +1,9 @@
+## License
+
+이 프로젝트는 NonCommercial License에 따라 배포됩니다. 비상업적 용도로만 사용 가능합니다.
+
+---
+
 # 승룡이네집 도서 검색 시스템
 
 ![seongryoung-base](https://github.com/user-attachments/assets/68ee4404-250a-4026-9a81-2d13fe30a9d1)
@@ -475,6 +481,7 @@ const LOCATION_POSITION: {
 
 <strong>2025.04.08</strong>: 이미지 사이즈를 최대한 크게 보여주도록 조정 및 hard navigation location 페이지에서는 뒤로 가기 버튼을 왼쪽 위로 변경
 <br />
+
 <details>    
 <summary><strong>2025.04.09</strong>: soft navigation location 이미지 로드되기 전 로딩 박스 보여주어 layout shift 방지</summary>
 
@@ -488,5 +495,6 @@ padding-top으로 aspect-ratio에 맞게 빈 박스를 만들 수 있다!
 
 layout shift 방지 박스 렌더링 시에는 margin-top이 0.75rem 존재하다가 Image 렌더링 후 사라지면서 비율이 맞지 않는 문제 발생하여, 해당 margin-top에 해당하는 만큼 박스 높이에서 빼주었다.
 
+
 </details>
 <br />
