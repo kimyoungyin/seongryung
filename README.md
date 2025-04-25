@@ -498,3 +498,5 @@ layout shift 방지 박스 렌더링 시에는 margin-top이 0.75rem 존재하�
 
 </details>
 <br />
+
+<strong>2025.04.25</strong>: 승룡이네집에 부착할 QR 코드 생성
