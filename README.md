@@ -12,6 +12,8 @@
 
 [승룡이네집 도서 검색 시스템](https://seongryung.vercel.app/)
 
+<img width="312" alt="qrcode" src="https://github.com/user-attachments/assets/9cf456c9-9ecb-43a3-b228-b157fd3fd478" />    
+
 ## 2. 프로젝트 소개
 
 -   [승룡이네집](https://map.naver.com/p/entry/place/187115219?placePath=%252Fhome%253Fentry%253Dplt&searchType=place&lng=127.1287584&lat=37.5350510&c=15.00,0,0,0,dh)은 카페와 만화책, 문화프로그램이 있는 복합문화공간입니다. 하지만 아직 도서 검색 시스템은 없었기에, 읽고 싶은 만화책의 위치를 찾을 수 있도록 도와주는 검색 시스템을 개발하였습니다.
