@@ -25,6 +25,7 @@ export default function ToLocationButton({ bookId }: { bookId: number }) {
             onClick={() => setIsLoading(true)}
             aria-label="위치 보기"
             aria-disabled={isLoading}
+            scroll={false}
         >
             {isLoading ? (
                 <>

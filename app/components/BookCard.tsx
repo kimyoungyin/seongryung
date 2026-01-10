@@ -27,7 +27,6 @@ export default function BookCard({
                         fill
                         sizes="(min-width: 640px) 6rem, 4rem" // w-24, w-16
                         className="object-cover rounded-lg"
-                        quality={80}
                     />
                 </div>
                 <div className="flex-1 flex flex-col sm:flex-row justify-between gap-4">

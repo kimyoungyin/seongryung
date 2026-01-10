@@ -3,6 +3,7 @@ import "./globals.css";
 import Image from "next/image";
 import { Analytics } from "@vercel/analytics/react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Metadata } from "next";
 
 const geistSans = localFont({
     src: "./fonts/GeistVF.woff",
@@ -14,6 +15,10 @@ const geistMono = localFont({
     variable: "--font-geist-mono",
     weight: "100 900",
 });
+
+export const metadata: Metadata = {
+    metadataBase: new URL("https://seongryung.vercel.app"),
+};
 
 export default function RootLayout({
     children,

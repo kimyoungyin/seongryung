@@ -1,44 +1,17 @@
-"use client";
-
 import GobackButton from "@/app/components/GoBackButton";
 import { getBookLocation } from "@/app/utils/actions";
 import Image from "next/image";
-import { useEffect, useMemo, useState } from "react";
 import { LOCATION_IMAGE_SIZE } from "@/app/utils/constants";
 interface PageProps {
-    params: Promise<{ id: string }>;
+    params: Promise<{ id: number }>;
 }
 // mt-3(0.75rem)을 빼기
 const LOCATION_IMAGE_RATIO_CLASSNAME = "pt-[calc(79.67754031%-0.75rem)]";
 
-export default function Page(props: PageProps) {
-    const [bookInfo, setBookInfo] = useState<{
-        location: number;
-    } | null>(null);
-
-    const scrollY = useMemo(() => window.scrollY, []);
-
-    useEffect(() => {
-        const getBookData = async () => {
-            const params = await props.params;
-            // 비동기적으로 책 정보와 위치를 db에 검색 후 없으면 Redirect
-
-            // 동적 라우팅은 비동기적이므로
-            // npx @next/codemod@latest next-async-request-api --force
-            const bookId = Number(await params.id);
-            setBookInfo(await getBookLocation(bookId));
-        };
-        getBookData();
-
-        document.body.style.position = "fixed";
-        document.body.style.top = `-${scrollY}px`;
-        document.body.style.width = "100%";
-
-        return () => {
-            document.body.style.position = "";
-            document.body.style.top = "";
-        };
-    }, []);
+export default async function Page(props: PageProps) {
+    const params = await props.params;
+    const bookId = Number(await params.id);
+    const bookInfo = await getBookLocation(bookId);
 
     return (
         <div
@@ -55,7 +28,7 @@ export default function Page(props: PageProps) {
             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
                 <div className="flex min-h-full justify-center p-4 text-center items-center">
                     <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-3xl px-4 pb-3 flex flex-col items-center">
-                        {bookInfo?.location ? (
+                        {bookInfo.location ? (
                             <Image
                                 src={`/location${bookInfo.location}.jpg`}
                                 alt={bookInfo.location + `번 책장 위치`}
