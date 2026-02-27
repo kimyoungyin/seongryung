@@ -72,8 +72,8 @@ flowchart LR
 ```mermaid
 flowchart LR
   searchPage[SearchPage]
-  clickLocation[위치 보기 클릭]
-  softRoute[@locationModal]
+  clickLocation['위치 보기' 클릭]
+  softRoute["@locationModal"]
   hardRoute[LocationRoute]
   homePage[홈]
   directUrl[새로고침 또는 URL 직접 입력]
