@@ -24,7 +24,7 @@
 
 <img width="312" alt="qrcode" src="https://github.com/user-attachments/assets/9cf456c9-9ecb-43a3-b228-b157fd3fd478" />
 
-## 기술 스택 요약
+## 기술 스택
 
 - **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript
@@ -32,7 +32,7 @@
 - **Data & Backend**: AWS RDS(MySQL, `mysql2/promise`), Server Actions(`cache`) 기반 조회, SQL 파라미터 바인딩
 - **Infra & 기타**: AWS S3(도서/책장 이미지), Vercel 배포, `@vercel/analytics`, `@vercel/speed-insights`
 
-## 주요 기능 요약
+## 주요 기능
 
 - **제목 기반 도서 검색**: 검색어 일부만 입력해도 제목에 해당 문자열이 포함된 도서를 조회하고, 결과는 `/?query=검색어` 형태의 URL Query로 유지됩니다.
 - **검색 맥락 유지**: 새로고침하거나 URL을 공유해도 같은 검색 결과를 다시 볼 수 있도록, 검색 상태를 `useState`가 아닌 URL Query로 관리했습니다.
@@ -40,7 +40,7 @@
 - **UX 개선**: Skeleton 로딩, 이미지 lazy loading, layout shift 방지 박스, 반응형 레이아웃, 배경 스크롤 잠금 등으로 실제 공간에서 모바일로 접근하는 사용성을 고려했습니다.
 - **SEO 최적화**: 검색어·도서별 `generateMetadata`와 Open Graph, favicon/OG 이미지 설정을 통해 검색 엔진에서 승룡이네집과 도서를 함께 발견할 수 있도록 설계했습니다.
 
-## 아키텍처 개요
+## 아키텍처
 
 - Next.js App Router 기반으로, **Server Actions + MySQL(AWS RDS) + S3 이미지 스토리지** 조합으로 구성했습니다.
 - 모든 DB 접근은 `app/utils/db.ts`의 `queryDatabase`를 통해 이루어지며, SQL 파라미터 바인딩으로 인젝션을 방지합니다.
@@ -86,7 +86,7 @@ flowchart LR
   hardRoute --> homePage
 ```
 
-## 폴더 구조 (요약)
+## 폴더 구조
 
 ```text
 app/
