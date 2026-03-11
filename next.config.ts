@@ -11,9 +11,9 @@ const nextConfig: NextConfig = {
             },
             {
                 protocol: "https",
-                hostname: (process.env.NEXT_PUBLIC_S3_HOSTNAME as string).split(
-                    "/"
-                )[2],
+                hostname: (
+                    process.env.NEXT_PUBLIC_SUPABASE_STORAGE_BASE as string
+                ).split("/")[2],
             },
         ],
     },
