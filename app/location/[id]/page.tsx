@@ -5,10 +5,13 @@ import {
     getBookLocationAndBookInfo,
     getBookMetadata,
 } from "@/app/utils/actions";
-import { getImageSrc } from "@/app/utils/util";
+import { getImageSrc, getLocationImageSrc } from "@/app/utils/util";
 import { Metadata } from "next";
 import Image from "next/image";
-import { LOCATION_IMAGE_SIZE } from "@/app/utils/constants";
+import {
+    LOCATION_IMAGE_SIZE,
+    LOCATION_MAP_IMAGE_SIZES,
+} from "@/app/utils/constants";
 
 interface PageProps {
     params: Promise<{ id: number }>;
@@ -63,7 +66,6 @@ export default async function Page(props: PageProps) {
     // npx @next/codemod@latest next-async-request-api --force
     const bookId = Number(await params.id);
     const bookInfo = await getBookLocationAndBookInfo(bookId);
-
     return (
         <>
             <div className="mx-auto overflow-hidden rounded-lg bg-white py-4 text-left shadow-xl sm:my-8 sm:max-w-3xl px-4 flex flex-col items-center">
@@ -82,13 +84,14 @@ export default async function Page(props: PageProps) {
                                 <Image
                                     src={getImageSrc(
                                         bookInfo.location,
-                                        bookInfo.id
+                                        bookInfo.id,
                                     )}
                                     alt={bookInfo.title}
                                     fill
                                     sizes="(min-width: 640px) 6rem, 4rem" // w-24, w-16
                                     className="object-cover rounded-lg"
                                     quality={80}
+                                    priority
                                 />
                             </div>
                             <div className="flex justify-between  gap-4">
@@ -118,13 +121,20 @@ export default async function Page(props: PageProps) {
                             </div>
                         </div>
                     </div>
-                    <Image
-                        src={`/location${bookInfo.location}.jpg`}
-                        alt={bookInfo.title + `이 있는 책장`}
-                        width={LOCATION_IMAGE_SIZE.width}
-                        height={LOCATION_IMAGE_SIZE.height}
-                        className="w-full mt-4"
-                    />
+                    <div
+                        className="relative mt-4 w-full"
+                        style={{
+                            aspectRatio: `${LOCATION_IMAGE_SIZE.width} / ${LOCATION_IMAGE_SIZE.height}`,
+                        }}
+                    >
+                        <Image
+                            src={getLocationImageSrc(bookInfo.location)}
+                            alt={bookInfo.title + `이 있는 책장`}
+                            fill
+                            sizes={LOCATION_MAP_IMAGE_SIZES}
+                            className="object-contain"
+                        />
+                    </div>
                 </>
             </div>
         </>
