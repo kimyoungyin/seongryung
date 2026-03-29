@@ -42,11 +42,12 @@ export default async function SearchResults({ query }: { query: string }) {
 
     return (
         <>
-            {books.map((bookObj) => (
+            {books.map((bookObj, index) => (
                 <BookCard
                     key={bookObj.id}
                     bookObj={bookObj}
                     isAboutLocation={false}
+                    prioritizeImage={index < 8}
                 />
             ))}
         </>

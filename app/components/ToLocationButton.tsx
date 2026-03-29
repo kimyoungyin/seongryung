@@ -41,6 +41,7 @@ export default function ToLocationButton({
             }
             onClick={() => setIsLoading(true)}
             onMouseEnter={preloadLocationImage}
+            onPointerDown={preloadLocationImage}
             aria-label="위치 보기"
             aria-disabled={isLoading}
         >

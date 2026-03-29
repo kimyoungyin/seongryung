@@ -6,9 +6,12 @@ import ToLocationButton from "@/app/components/ToLocationButton";
 export default function BookCard({
     bookObj,
     isAboutLocation,
+    prioritizeImage = false,
 }: {
     bookObj: Book;
     isAboutLocation: boolean;
+    /** 검색 결과 상단 N개만 우선 로드해 모달 전환 시 lazy 폭증을 완화 */
+    prioritizeImage?: boolean;
 }) {
     return (
         <div
@@ -28,6 +31,7 @@ export default function BookCard({
                         sizes="(min-width: 640px) 6rem, 4rem" // w-24, w-16
                         className="object-cover rounded-lg"
                         quality={80}
+                        priority={prioritizeImage}
                     />
                 </div>
                 <div className="flex-1 flex flex-col sm:flex-row justify-between gap-4">
