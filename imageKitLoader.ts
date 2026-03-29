@@ -2,16 +2,12 @@ import type { ImageLoaderProps } from "next/image";
 
 const IK_HOST = "ik.imagekit.io";
 
-/**
- * 전역 커스텀 로더 — ImageKit만 `tr` 적용.
- * 로컬·Supabase 등은 `<Image>`가 `src` 그대로 쓰므로 여기로 오지 않거나,
- * 오더라도 원본 URL을 반환합니다 (`loader: custom`일 때 `/_next/image`는 사용 불가).
- */
-export default function imageKitLoader({
-    src,
-    width,
-    quality,
-}: ImageLoaderProps): string {
+/** `next/image` 로더와 동일한 ImageKit URL 조합 — 프리로드 등에서 재사용 */
+export function buildImageKitUrl(
+    src: string,
+    width: number,
+    quality?: number,
+): string {
     const q = quality ?? 75;
 
     if (src.startsWith("/")) {
@@ -29,4 +25,17 @@ export default function imageKitLoader({
     }
 
     return src;
+}
+
+/**
+ * 전역 커스텀 로더 — ImageKit만 `tr` 적용.
+ * 로컬·Supabase 등은 `<Image>`가 `src` 그대로 쓰므로 여기로 오지 않거나,
+ * 오더라도 원본 URL을 반환합니다 (`loader: custom`일 때 `/_next/image`는 사용 불가).
+ */
+export default function imageKitLoader({
+    src,
+    width,
+    quality,
+}: ImageLoaderProps): string {
+    return buildImageKitUrl(src, width, quality);
 }

@@ -50,7 +50,10 @@ export default function BookCard({
                     </div>
                     {!isAboutLocation && (
                         <div className="self-end sm:self-center text-xs md:text-sm lg:text-md">
-                            <ToLocationButton bookId={bookObj.id} />
+                            <ToLocationButton
+                                bookId={bookObj.id}
+                                location={bookObj.location}
+                            />
                         </div>
                     )}
                 </div>
