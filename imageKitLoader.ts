@@ -1,7 +1,7 @@
 import type { ImageLoaderProps } from "next/image";
 
 const IK_HOST = "ik.imagekit.io";
-
+console.log("imageKitLoader");
 /**
  * 전역 커스텀 로더 — ImageKit만 `tr` 적용.
  * 로컬·Supabase 등은 `<Image>`가 `src` 그대로 쓰므로 여기로 오지 않거나,
