@@ -1,11 +1,18 @@
 "use client";
 
+import { getLocationMapPreloadUrl } from "@/app/utils/locationMapImagePreload";
 import { Loader2 } from "lucide-react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-export default function ToLocationButton({ bookId }: { bookId: number }) {
+export default function ToLocationButton({
+    bookId,
+    location,
+}: {
+    bookId: number;
+    location: number;
+}) {
     const [isLoading, setIsLoading] = useState(false);
     const pathname = usePathname();
 
@@ -15,6 +22,16 @@ export default function ToLocationButton({ bookId }: { bookId: number }) {
         }
     }, [pathname]);
 
+    const preloadLocationImage = () => {
+        if (typeof window === "undefined") return;
+        const img = new Image();
+        img.src = getLocationMapPreloadUrl(
+            location,
+            window.innerWidth,
+            window.devicePixelRatio || 1,
+        );
+    };
+
     return (
         <Link
             href={`/location/${bookId}`}
@@ -23,6 +40,7 @@ export default function ToLocationButton({ bookId }: { bookId: number }) {
                 (isLoading ? "cursor-not-allowed opacity-50" : "")
             }
             onClick={() => setIsLoading(true)}
+            onMouseEnter={preloadLocationImage}
             aria-label="위치 보기"
             aria-disabled={isLoading}
         >
