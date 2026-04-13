@@ -4,6 +4,7 @@ import GobackButton from "@/app/components/GoBackButton";
 import { getBookLocation } from "@/app/utils/actions";
 import Image from "next/image";
 import { useEffect, useLayoutEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import {
     LOCATION_IMAGE_SIZE,
     LOCATION_MAP_IMAGE_SIZES,
@@ -41,17 +42,23 @@ interface PageProps {
 }
 
 export default function Page(props: PageProps) {
-    const [bookInfo, setBookInfo] = useState<{
-        location: number;
-    } | null>(null);
+    const searchParams = useSearchParams();
+    // ToLocationButton이 ?loc=N 으로 넘겨주면 DB 조회 없이 즉시 렌더링.
+    // 직접 URL 접근 등 loc이 없는 경우에만 Server Action으로 폴백.
+    const locFromUrl = searchParams.get("loc");
+    const [location, setLocation] = useState<number | null>(
+        locFromUrl !== null ? Number(locFromUrl) : null,
+    );
 
     useScrollLock();
 
     useEffect(() => {
+        if (location !== null) return; // 이미 loc 파라미터로 알고 있으면 조회 생략
         const getBookData = async () => {
             const params = await props.params;
             const bookId = Number(params.id);
-            setBookInfo(await getBookLocation(bookId));
+            const data = await getBookLocation(bookId);
+            setLocation(data.location);
         };
         getBookData();
         // 이 인터셉트 모달은 마운트 시점의 `id`만 조회하면 됨. props.params는 렌더마다 새 Promise일 수 있음.
@@ -64,11 +71,11 @@ export default function Page(props: PageProps) {
             aria-labelledby="modal-title"
             role="dialog"
             aria-modal="true"
-            aria-busy={bookInfo === null}
+            aria-busy={location === null}
         >
             <h2 id="modal-title" className="sr-only">
-                {bookInfo?.location != null
-                    ? `${bookInfo.location}번 책장 위치`
+                {location != null
+                    ? `${location}번 책장 위치`
                     : "위치 불러오는 중"}
             </h2>
             <div
@@ -79,7 +86,7 @@ export default function Page(props: PageProps) {
             <div className="fixed inset-0 z-10 w-screen overflow-y-auto">
                 <div className="flex min-h-full justify-center p-4 text-center items-center">
                     <div className="relative transform overflow-hidden rounded-lg bg-white text-left shadow-xl transition-all sm:my-8 w-full sm:max-w-3xl px-4 pb-3 flex flex-col items-center">
-                        {bookInfo?.location ? (
+                        {location != null ? (
                             <div
                                 className="relative mt-3 w-full"
                                 style={{
@@ -87,8 +94,8 @@ export default function Page(props: PageProps) {
                                 }}
                             >
                                 <Image
-                                    src={getLocationImageSrc(bookInfo.location)}
-                                    alt={bookInfo.location + `번 책장 위치`}
+                                    src={getLocationImageSrc(location)}
+                                    alt={location + `번 책장 위치`}
                                     fill
                                     sizes={LOCATION_MAP_IMAGE_SIZES}
                                     className="object-contain"

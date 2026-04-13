@@ -34,7 +34,7 @@ export default function ToLocationButton({
 
     return (
         <Link
-            href={`/location/${bookId}`}
+            href={`/location/${bookId}?loc=${location}`}
             className={
                 "bg-skeleton text-text-primary px-4 py-2 rounded-md hover:bg-skeleton-hover transition-colors whitespace-nowrap inline-flex items-center gap-2 " +
                 (isLoading ? "cursor-not-allowed opacity-50" : "")
